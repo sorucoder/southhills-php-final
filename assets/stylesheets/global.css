@@ -1,0 +1,151 @@
+* {
+    --primary-background-color: #191308;
+    --primary-text-color: white;
+    --secondary-background-color: #92898A;
+    --secondary-text-color: black;
+    --tertiary-background-color: #AF9FA5;
+    --tertiary-text-color: black;
+    --quaternary-background-color: #322A26;
+    --quaternary-text-color: white;
+
+    --spacing-widest: 2.5rem;
+    --spacing-wide: 2rem;
+    --spacing-normal: 1rem;
+    --spacing-narrow: 0.5rem;
+    --spacing-narrowest: 0.25rem;
+
+    --site-header-content-height: 48px;
+    --site-header-padding: var(--spacing-wide);
+    --site-header-height: calc(2 * var(--site-header-padding) + var(--site-header-content-height));
+
+    --site-footer-content-height: 24px;
+    --site-footer-padding: var(--spacing-wide);
+    --site-footer-height: calc(2 * var(--site-footer-padding) + var(--site-footer-content-height));
+}
+
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+    margin: 0;
+    display: grid;
+	grid-template-rows: var(--site-header-height) 1fr var(--site-footer-height);
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
+}
+
+#siteHeader {
+    background-color: var(--primary-background-color);
+    color: var(--primary-text-color);
+    grid-area: "header";
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 0 var(--spacing-narrowest) var(--spacing-widest) black;
+}
+
+#siteLogo {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-normal);
+    gap: var(--spacing-narrow);
+}
+
+#siteLogo > h1 {
+    margin: 0;
+}
+
+#siteLogo > img {
+    height: var(--site-header-content-height);
+}
+
+#siteLogo > img:last-child {
+    transform: scaleX(-1);
+}
+
+#siteNavigation {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: var(--spacing-wide);
+    gap: var(--spacing-wide);
+}
+
+#siteNavigation a {
+    border: 1px solid var(--primary-text-color);
+    border-radius: var(--spacing-wide);
+    color: var(--primary-text-color);
+    text-decoration: none;
+    padding: var(--spacing-normal) var(--spacing-wide);
+}
+
+#siteNavigation a:hover {
+    background-color: var(--primary-text-color);
+    border: 1px solid var(--primary-text-color);
+    color: var(--primary-background-color);
+}
+
+#siteContent {
+    min-height: calc(100vh - (var(--site-header-height) + var(--site-footer-height)));
+    padding-inline: var(--spacing-wide);
+    grid-area: "main";
+}
+
+#siteContent ol, #siteContent ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#siteContent ol li {
+    margin: var(--spacing-narrow) 0;
+    padding: var(--spacing-normal) 0;
+}
+
+#siteContent fieldset {
+    background-color: var(--tertiary-background-color);
+    color: var(--tertiary-text-color);
+    border: 1px solid black;
+    margin: var(--spacing-normal) 0;
+}
+
+#siteContent fieldset legend {
+    background-color: var(--quaternary-background-color);
+    color: var(--quaternary-text-color);
+    border: 1px solid black;
+}
+
+#siteContent a, #siteContent button[type="submit"] {
+    background-color: var(--quaternary-background-color);
+    color: var(--quaternary-text-color);
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--spacing-wide);
+    padding: var(--spacing-narrow);
+}
+
+#siteContent a:hover, #siteContent button[type="submit"]:hover {
+    background-color: var(--quaternary-text-color);
+    color: var(--quaternary-background-color);
+    border: 2px solid var(--quaternary-background-color);
+    border-radius: var(--spacing-wide);
+    padding: var(--spacing-narrow);
+}
+
+#siteContent .response {
+    border: 2px solid #ff0000;
+}
+
+#siteContent .answer {
+    border: 2px solid #00ff00;
+}
+
+#siteFooter {
+    background-color: var(--primary-background-color);
+    color: var(--primary-text-color);
+    padding: var(--site-footer-padding);
+    grid-area: "footer";
+    display: flex;
+    align-items: center;
+}
